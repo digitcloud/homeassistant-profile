@@ -1,0 +1,60 @@
+### HOMEKIT SETUP ###
+###############################################
+
+auto_start: true
+filter:
+  include_entities:
+    - binary_sensor.door_window_sensor_1
+    - binary_sensor.doorbell
+    - light.yeelight
+    - sensor.m1_humidity
+    - sensor.m1_pm25
+    - sensor.m1_temperature
+    - sensor.xiaomi_1_humidity
+    - sensor.xiaomi_1_pressure
+    - sensor.xiaomi_2_humidity
+    - media_player.hai_xin_dian_shi
+  include_domains:
+    - switch
+    - climate
+  exclude_entities:
+    - switch.livingroom_blue
+    - switch.livingroom_white
+    - switch.livingroom_yellow
+    - switch.hisense_switch
+
+entity_config:
+  binary_sensor.door_window_sensor_1:
+    name: '入户门'
+  binary_sensor.doorbell:
+    name: '门铃'
+  sensor.m1_temperature:
+    name: '室内温度'
+  sensor.m1_humidity:
+    name: '室内湿度'
+  sensor.m1_pm25:
+    name: '室内PM25'
+  sensor.xiaomi_1_humidity:
+    name: '书房湿度'
+  sensor.xiaomi_1_pressure:
+    name: '书房气压'
+  sensor.xiaomi_2_humidity:
+    name: '次卧湿度'
+  light.yeelight:
+    name: '台灯'
+  switch.hisense_state:
+    name: '海信电视'
+  switch.livingroom_switch:
+    name: '主灯'
+  switch.teac_switch:
+    name: '音响'
+  switch.plug_coffee_machine:
+    name: '咖啡机'
+  switch.broadlink_switch:
+    name: '电脑主控'
+  climate.gree_climate:
+    name: '次卧空调'
+  climate.aqara_air_conditioning_companion:
+    name: '书房空调'
+
+

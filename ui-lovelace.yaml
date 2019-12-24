@@ -1,0 +1,188 @@
+########## 前端使用内置的lovelace服务并通过改写yaml文件方式进行设计 ################
+########## 外置插件需要在resource里面进行refer，可索引到本地端链接或者远程github repositpory
+########## 由custom-updater进行更新管理，需要在url最后添加"?track=true"，否则无法自动更新
+resources:
+  - url: /local/custom-lovelace/tracker-card/tracker-card.js?track=true
+    type: module
+  - url: /local/custom-lovelace/weather-card/weather-card.js?track=true
+    type: module
+  - url: /local/custom-lovelace/swipe-card/swipe-card.js?track=true
+    type: module
+  - url: /local/custom-lovelace/mini-graph-card/mini-graph-card-bundle.js?v=0.3.0
+    type: module
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.1
+    type: module  
+  - url: /local/custom-lovelace/useful-markdown-card/markdown-mod.js?track=true
+    type: module
+  - url: /local/custom-lovelace/card-tools.js?track=true
+    type: js
+  - url: /local/custom-lovelace/layout-card/layout-card.js?track=true
+    type: js
+
+### compact-custom-header ###
+### src: https://github.com/maykar/compact-custom-header ###
+cch:
+  background: transparent
+  menu: show
+  options: hide
+  voice: hide
+  #notifications: hide
+
+title: 我的家
+views:
+  
+  - title: 控制
+    path: config
+    icon: mdi:wrench
+    cards:
+      - type: custom:tracker-card
+        trackers: ['sensor.custom_card_tracker']
+        
+  - title: 主页
+    path: overview
+    icon: mdi:home-circle
+    background: center / cover no-repeat url("/local/photos/Republic-of-Gamers.jpg") fixed
+    panel: true
+    cards:
+      
+      ### lovelace-layout-card ###
+      ### src: https://github.com/thomasloven/lovelace-layout-card ###
+      - type: custom:layout-card
+        layout: vertical
+        cards:
+
+        ### Welcome page #############################################
+        ###########################################################
+        
+        ### lovelace-markdown-mod ###
+        ### src: https://github.com/thomasloven/lovelace-markdown-mod ###
+        - type: markdown
+          content: >
+            <font face="苹方-简" size=5>欢迎回家：</font><br/><br/>
+            <center>
+            <font face="Noto Nastaliq Urdu" size=3>[[ sensor.date ]]</font><br/><br/>
+            <font face="综艺体简" size=10>[[ sensor.time ]]</font>
+            </center>
+
+        ### Darksky weather #######################################
+        ###########################################################
+        
+        ### weather-card ###
+        ### src: https://github.com/bramkragten/weather-card ###
+        - type: custom:weather-card
+          entity: weather.darkskytian_qi
+          icons: "/local/custom-lovelace/weather-card/icons/"
+
+        - break
+
+        ### Phicomm-m1 #############################################
+        ###########################################################
+        
+        - type: entities
+          show_header_toggle: false
+          entities:
+            ### swipe-card ###
+            ### src: https://github.com/bramkragten/swipe-card ###
+            - type: custom:swipe-card
+              path: '/local/custom-lovelace/swipe-card'
+              parameters:
+                effect: coverflow
+                grabCursor: true
+                centeredSlides: true
+                slidesPerView: auto
+                coverflowEffect:
+                  rotate: 50
+                  stretch: 0
+                  depth: 100
+                  modifier: 1
+                  slideShadows: true
+                pagination:
+                  type: bullets
+              cards:
+                ### mini-graph-card ###
+                ### src: https://github.com/kalkih/mini-graph-card ###
+                - type: custom:mini-graph-card
+                  entities:
+                    - sensor.m1_temperature
+                  name: 室内温度
+                  line_color: '#e74c3c'
+                  font_size: 75
+                  points_per_hour: 6
+
+                - type: custom:mini-graph-card
+                  entities:
+                    - sensor.m1_humidity
+                  name: 室内湿度
+                  line_color: blue
+                  font_size: 75
+                  points_per_hour: 6
+
+                - type: custom:mini-graph-card
+                  entities: 
+                    - sensor.m1_hcho
+                  name: 室内甲醛
+                  font_size: 75
+                  points_per_hour: 6
+                  color_thresholds:
+                    - value: 0
+                      color: "#9AFF9A"
+                    - value: 0.1
+                      color: "#CAFF70"
+                    - value: 0.3
+                      color: "#CDCD00"
+
+                - type: custom:mini-graph-card
+                  entities: 
+                    - sensor.m1_pm25
+                  name: 室内pm2.5
+                  font_size: 75
+                  points_per_hour: 6
+                  color_thresholds:
+                    - value: 0
+                      color: "#D9D9D9"
+                    - value: 75
+                      color: "#CDC1C5"
+                    - value: 150
+                      color: "#B3B3B3"
+
+            - input_number.phicomm_m1_led  
+                
+        ### Heweather #############################################
+        ###########################################################
+
+        - type: entities
+          show_header_toggle: false
+          entities: 
+            - sensor.heweather_comf
+            - sensor.heweather_cw
+            - sensor.heweather_drsg
+            - sensor.heweather_sport
+            - sensor.heweather_trav
+            - sensor.heweather_uv
+
+        - break
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - sun.sun
+            - sensor.heweather_tmp_max
+            - sensor.heweather_tmp_min
+            - sensor.heweather_fl
+            - sensor.heweather_tmp
+            - sensor.heweather_hum
+            - sensor.heweather_pop
+            - sensor.heweather_cond_txt
+            - sensor.heweather_pcpn
+            - sensor.heweather_pres
+            - sensor.heweather_vis
+     
+
+  - title: 面板
+    path: panel
+    icon: mdi:home-automation
+    background: "#231f25"
+    cards:
+        
+      ### Floorplan page #############################################
+      ###########################################################
+

@@ -1,0 +1,10 @@
+### input_number.yaml
+### Phicomm-m1 #############################################
+### 可通过滑动栏控制斐讯m1屏幕的亮度 ############################
+phicomm_m1_led:
+  name: 屏幕亮度
+  icon: mdi:led-on
+  initial: 50
+  min: 0
+  max: 50
+  step: 25

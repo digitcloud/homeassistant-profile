@@ -1,0 +1,8 @@
+{
+  "domain": "Phicomm",
+  "name": "PhicommAirDetector",
+  "documentation": "https://bbs.hassbian.com/thread-2508-1-1.html",
+  "dependencies": [],
+  "codeowners": [],
+  "requirements": []
+}

@@ -1,0 +1,125 @@
+###############################################
+# 小米扫地机器人区域打扫，适合二代拥有地图记忆功能
+# set_vacuum_room_hallway:
+#   alias: "打扫玄关"
+#   sequence: 
+#     - service: vacuum.send_command
+#       data:
+#         entity_id: vacuum.xiaomi_vacuum_cleaner
+#         command: app_zoned_clean
+#         params: [[22250, 28900, 25500, 31466, 1]]
+
+# set_vacuum_room_dining:
+#   alias: "打扫厨房饭厅"
+#   sequence:
+#     - service: vacuum.send_command
+#       data:
+#         entity_id: vacuum.xiaomi_vacuum_cleaner
+#         command: app_zoned_clean
+#         params: [[20300, 26800, 21850, 28300, 1], [22250, 25640, 25500, 28900, 1]]
+
+# set_vacuum_room_living:
+#   alias: "打扫客厅过道"
+#   sequence:
+#     - service: vacuum.send_command
+#       data:
+#         entity_id: vacuum.xiaomi_vacuum_cleaner
+#         command: app_zoned_clean
+#         params: [[18000, 24800, 21850, 25640, 1], [22250, 21250, 25500, 25640, 1]]
+
+# set_vacuum_room_studyroom:
+#   alias: "打扫书房"
+#   sequence:
+#     - service: vacuum.send_command
+#       data:
+#         entity_id: vacuum.xiaomi_vacuum_cleaner
+#         command: app_zoned_clean
+#         params: [[20000, 21200, 21700, 24600, 1]]
+
+# set_vacuum_room_mainbedroom:
+#   alias: "打扫主卧"
+#   sequence:
+#     - service: vacuum.send_command
+#       data:
+#         entity_id: vacuum.xiaomi_vacuum_cleaner
+#         command: app_zoned_clean
+#         params: [[15700, 17800, 18640, 22752, 1]]
+
+# set_vacuum_room_bedroom:
+#   alias: "打扫次卧"
+#   sequence:
+#     - service: vacuum.send_command
+#       data:
+#         entity_id: vacuum.xiaomi_vacuum_cleaner
+#         command: app_zoned_clean
+#         params: [[14000, 24900, 17000, 28000, 1]]
+
+set_vacuum_speed_quiet:
+  alias: "扫地安静模式"
+  sequence:
+    - service: vacuum.set_fan_speed
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        fan_speed: Quiet
+
+set_vacuum_speed_balance:
+  alias: "扫地标准模式"
+  sequence:
+    - service: vacuum.set_fan_speed
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        fan_speed: Balanced
+
+set_vacuum_speed_turbo:
+  alias: "扫地强力模式"
+  sequence:
+    - service: vacuum.set_fan_speed
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        fan_speed: Turbo
+
+set_vacuum_speed_max:
+  alias: "扫地全速模式"
+  sequence:
+    - service: vacuum.set_fan_speed
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        fan_speed: Max
+
+#################################################
+
+# vacuum_room_mode:
+#   alias: "分区打扫"
+#   sequence:
+#     - service: script.turn_on
+#       data_template:
+#         entity_id: >
+#           {% if is_state("input_select.vacuum_room_select", "玄关") %}
+#             script.set_vacuum_room_hallway
+#           {% elif is_state("input_select.vacuum_room_select", "厨房饭厅") %}
+#             script.set_vacuum_room_dining
+#           {% elif is_state("input_select.vacuum_room_select", "客厅过道") %}
+#             script.set_vacuum_room_living
+#           {% elif is_state("input_select.vacuum_room_select", "书房") %}
+#             script.set_vacuum_room_studyroom
+#           {% elif is_state("input_select.vacuum_room_select", "主卧室") %}
+#             script.set_vacuum_room_mainbedroom
+#           {% elif is_state("input_select.vacuum_room_select", "次卧室") %}
+#             script.set_vacuum_room_bedroom
+#           {% endif %}
+
+vacuum_speed_select:
+  alias: "吸力选择"
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("input_select.vacuum_fan_select", "安静") %}
+            script.set_vacuum_speed_quiet
+          {% elif is_state("input_select.vacuum_fan_select", "标准") %}
+            script.set_vacuum_speed_balance
+          {% elif is_state("input_select.vacuum_fan_select", "强力") %}
+            script.set_vacuum_speed_turbo
+          {% elif is_state("input_select.vacuum_fan_select", "全速") %}
+            script.set_vacuum_speed_max
+          {% endif %}

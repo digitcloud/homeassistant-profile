@@ -1,0 +1,68 @@
+### switches.yaml
+### broadlink SP-Mini3 switch #############################################
+### 博联 SP-Mini3 插座 #####################################################
+- platform: broadlink
+  host: 192.168.50.231
+  mac: 'C8:F7:42:91:C5:A2'
+  type: spmini2
+
+### broadlink RM switch #########################################
+### 博联RM-Pro红外遥控 ############################################
+- platform: broadlink
+  host: 192.168.50.117
+  mac: '34:EA:34:44:3E:7D'
+  friendly_name: 博联控制主机
+  type: rm2_pro_plus2
+  switches:
+    #############################################################
+    # Hisense TV switch
+    hisense_switch:
+      command_on: 'JgBYAAABKZQTEhISExISEhISExISEhISEzYSNhM2EjcSNxM2EhISNxI2EhMSNhM2EhITEhISEhITEhI2ExISEhI2EzYSNxE3EgAFKQABKUoSAAxYAAEpShMADQU='
+      command_off: 'JgBYAAABKJUSExETEhMRExETEhMRExETEjcRNxM2EjcSNxI3EhISNxI2ExISNhM2EhITEhISEhITEhI2EhITEhI2EzYSNxI2EwAFKQABKUoTAAxXAAEpShMADQU='
+
+    # TEAC media player
+    teac_switch:
+      command_on: 'JgBgAAABK5USExETEhMRFBETEhMRFBETEjoROhE6EjkSOhE6EjkSOhE6EToSExE6EhMRFBETEhMRFBETEjkSExI6EToROhI5EgAFFwABK0sSAAyZAAEqTBAADJwAASpLEAANBQAAAAAAAAAA'
+      command_off: 'JgBgAAABK5UTERMSExISEhMSEhITEhMSEzgTOBM5EjkTOBM5EjkTOBM4EzkTEhI5ExISEhMSExISEhMSEzgTEhM4EzgTORM4EwAFFgABLEoTAAyYAAEsShMADJgAAS1LEgANBQAAAAAAAAAA'
+    
+    # Living room light
+    # 以下为射频码
+    livingroom_switch:
+      command_on: 'dQY0ABkLGQsZCxkLCBwHHAgcBxwIHBkLCBwHHAgcCBwIHBkLCBwIHAgcBxwZCxkLCBwHHAgAARAAAAAA=='
+      command_off: 'dQY0ABkLGQsZCxkLCBwHHAgcBxwIHBkLCBwHHAgcCBwIHBkLCBwIHAgcBxwZCxkLCBwHHAgAARAAAAAA=='
+
+    livingroom_white:
+      command_on: 'dAc0ABkLGQsaCxoLCB0HHQcdBx0IHRkLBx0HHQcdBx0HHRkLGQwZCwcdBx0HHQcdBx0HHQcAARUAAAAA=='
+      command_off: 'dAc0ABkLGQsaCxoLCB0HHQcdBx0IHRkLBx0HHQcdBx0HHRkLGQwZCwcdBx0HHQcdBx0HHQcAARUAAAAA=='
+
+    livingroom_blue:
+      command_on: 'dQA4ARoLGQsaCxkLBx0IHQcdBx0HHhkLBx0HHQgcCBwIHRkLBx0HHQcdCB0HHQcdGQsZCwcAARwZ
+      CxoKGgsZCwcdBx0HHQcdBx0ZCwcdCBwHHQgcCBwaCwccCB0HHQccCB0HHRkLGQsHAAEbGQsaChoL
+      GAsHHQceBh0IHAceGAwGHQgcCB0GHQgdGAsHHQceBh4GHQcdBx0ZCxkMBgABGxkLGgoZCxkLBx0I
+      HAcdBx0HHRkLBx0HHQcdBx0HHRkLBx0HHQccCBwIHAgcGgoaCgcAARsZCxkLGQsZCwcdBx0HHAgc
+      CB0ZCggcBx0IHAcdBx0ZCwcdBx0HHQccCBwIHRgLGgoHAAEbGQsZCxkLGQsGHQcdBx0HHQcdGQsH
+      HQcdBx0HHQYdGQwGHQgcBx0HHQcdBxwaChoLBgAF3A=='
+      command_off: 'dQA4ARoLGQsaCxkLBx0IHQcdBx0HHhkLBx0HHQgcCBwIHRkLBx0HHQcdCB0HHQcdGQsZCwcAARwZ
+      CxoKGgsZCwcdBx0HHQcdBx0ZCwcdCBwHHQgcCBwaCwccCB0HHQccCB0HHRkLGQsHAAEbGQsaChoL
+      GAsHHQceBh0IHAceGAwGHQgcCB0GHQgdGAsHHQceBh4GHQcdBx0ZCxkMBgABGxkLGgoZCxkLBx0I
+      HAcdBx0HHRkLBx0HHQcdBx0HHRkLBx0HHQccCBwIHAgcGgoaCgcAARsZCxkLGQsZCwcdBx0HHAgc
+      CB0ZCggcBx0IHAcdBx0ZCwcdBx0HHQccCBwIHRgLGgoHAAEbGQsZCxkLGQsGHQcdBx0HHQcdGQsH
+      HQcdBx0HHQYdGQwGHQgcBx0HHQcdBxwaChoLBgAF3A=='
+
+    livingroom_yellow:
+      command_on: 'dAY0AAgeCB4aDAgdCB4IHggeCB4aCwgeBx4aDBoLCB4IHQgeCB4IAAEdGgsaCxoLGgwIHQgdCB4AAAAA=='
+      command_off: 'dAY0AAgeCB4aDAgdCB4IHggeCB4aCwgeBx4aDBoLCB4IHQgeCB4IAAEdGgsaCxoLGgwIHQgdCB4AAAAA=='
+
+# 用于构建可反馈的电视开关方案 #
+- platform: template
+  switches:
+    hisense_state:
+      value_template: "{{ is_state('binary_sensor.hisensetv_state', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.hisense_switch
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.hisense_switch
+
+ 

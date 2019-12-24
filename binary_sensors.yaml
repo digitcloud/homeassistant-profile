@@ -1,0 +1,7 @@
+### binary_sensors.yaml
+### hisensetv_state_int #############################################
+- platform: ping
+  name: hisensetv_state
+  host: 192.168.50.227
+  scan_interval: 10
+  count: 2

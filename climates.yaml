@@ -1,0 +1,16 @@
+- platform: gree
+  host: 192.168.50.60  # ip address of the gree ac
+  mac: '780F77ACC637'  # mac address of the gree ac
+  port: 7000
+  min_temp: 16  # range of the configured temperature zone
+  max_temp: 30
+  target_temp: 26
+  target_temp_step: 1
+  temp_sensor: sensor.xiaomi_2_temperature  # input here the name of the sensor measuring current temp
+  encryption_key: <your-encrytion-key> 
+
+- platform: xiaomi_airconditioningcompanion
+  host: 192.168.50.6  # ip address of the aqara-ac-companion
+  token: <your-token>  
+  target_sensor: sensor.xiaomi_1_temperature   # input here the name of the sensor measuring current temp
+  scan_interval: 30

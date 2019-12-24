@@ -1,0 +1,71 @@
+### sensors.yaml
+### Time & date #############################################
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+
+### Heweather #############################################
+### 数据来自于和风天气api ####################################
+### src: https://github.com/morestart/HeWeather ###########
+- platform: HeWeather
+  city: <城市名 e.g. 广州>
+  aqi_city: <your-city e.g. Guangzhou>
+  appkey: <your-api>
+  options:
+    - fl
+    - tmp
+    - cond_txt
+    - hum
+    - pcpn
+    - pres
+    - vis
+    - comf
+    - cw
+    - drsg
+    - sport
+    - trav
+    - uv
+    - tmp_max
+    - tmp_min
+    - pop
+
+### Phicomm-m1 #############################################
+- platform: PhicommAirDetector
+  name: m1
+- platform: template
+  sensors:
+    m1_pm25:
+      value_template: "{{ states.sensor.m1.attributes.pm25 }}"
+      unit_of_measurement: μg/m³
+    m1_hcho:
+      value_template: "{{ states.sensor.m1.attributes.hcho }}"
+      unit_of_measurement: mg/m³
+    m1_temperature:
+      value_template: "{{ states.sensor.m1.attributes.temperature }}"
+      unit_of_measurement: °C
+    m1_humidity:
+      value_template: "{{ states.sensor.m1.attributes.humidity }}"
+      unit_of_measurement: "%"
+
+### Gaode-traffic #########################################
+### 数据来自于高德api, 测试平台:https://restapi.amap.com/v3/traffic/status/road?name=<道路名>&key=<用户的key> 需先申请api ######
+- platform: gaodetraffic
+  scan_interval: 350
+  name: <road-name>
+  api_key: <your-api>
+  road_name: <道路名 e.g. 迎宾路>
+  city:  <城市名 e.g. 广州>
+- platform: gaodetraffic
+  scan_interval: 350
+  name: <road-name>
+  api_key: <your-api>
+  road_name: <道路名>
+  city:  <城市名>
+- platform: gaodetraffic
+  scan_interval: 350
+  name: <road-name>
+  api_key: <your-api>
+  road_name: <道路名>
+  city: <城市名>
+

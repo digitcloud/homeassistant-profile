@@ -1,0 +1,39 @@
+### themes.yaml ############################################
+### 败家之眼主题调色方案 ######################################
+darkred_theme:
+ # Main colors that can be changed
+  dark-primary-color: "#c66900"
+  disabled-text-color: "#545454" # Disabled text colour
+  divider-color: "rgba(255, 255, 255, 0.12)" # Divider colour
+  light-primary-color: "#e06c6c"
+  paper-card-background-color: "rgba(29, 29, 29, 0.5)" # 卡片背景颜色
+  paper-grey-200: "#191919" # 侧边栏选中项背景色
+  paper-item-icon-color: "#d3d3d3" # Icon colour
+  paper-listbox-background-color: "#202020" # 侧边栏背景色
+  primary-background-color: "#303030" # 其他部件背景色 (dialogs, e.t.c)
+  primary-color: "#d32f2f" # 主 UI 字体颜色
+  primary-text-color: "#cfcfcf" # 首选字体颜色
+  secondary-background-color: "#131313" # 主 UI 背景颜色
+  sidebar-text_-_background: "#62717b" 
+# Colors based on variables, see above
+  paper-card-header-color: "var(--paper-item-icon-color)" # 卡片标题颜色
+  paper-item-icon-active-color: "var(--primary-color)"
+  paper-item-icon_-_color: "var(--primary-text-color)"
+  paper-listbox-color: "var(--primary-text-color)" # 侧边栏字体色
+  paper-grey-50: "var(--primary-text-color)"
+  paper-slider-active-color: "var(--primary-color)"
+  paper-slider-knob-color: "var(--primary-color)"
+  paper-slider-knob-start-color: "var(--primary-color)"
+  paper-slider-pin-color: "var(--primary-color)"
+  paper-slider-secondary-color: "var(--light-primary-color)"
+  paper-toggle-button-checked-ink-color: "var(--dark-primary-color)"
+  paper-toggle-button-checked-button-color: "var(--primary-color)"
+  paper-toggle-button-checked-bar-color: "var(--light-primary-color)"
+  paper-toggle-button-unchecked-bar-color: "var(--primary-text-color)"
+  secondary-text-color: "e2e2e2" # 次字体颜色
+  table-row-background-color: "var(--paper-card-background-color)"
+  table-row-alternative-background-color: "var(--sidebar-text_-_background)"
+  # Google
+  google-red-500: '#E45E65'
+  google-green-500: '#39E949'
+

@@ -1,0 +1,96 @@
+climate.aqara_air_conditioning_companion:
+  friendly_name: 书房空调
+  icon: mdi:air-conditioner
+climate.gree_climate:
+  friendly_name: 次卧空调
+  icon: mdi:air-conditioner
+group.all_lights:
+  friendly_name: 所有灯光
+  icon: mdi:lightbulb
+group.all_switches:
+  friendly_name: 所有开关
+  icon: mdi:power-socket-au
+group.all_vacuum_cleaners:
+  friendly_name: 所有扫地机器人
+  icon: mdi:robot-vacuum
+group.automations:
+  friendly_name: 所有自动化
+  icon: mdi:home-automation
+group.devices:
+  friendly_name: 所有移动设备
+  icon: mdi:cellphone
+binary_sensor.door_window_sensor_1:
+  friendly_name: 入户门
+  icon: mdi:door
+binary_sensor.motion_sensor_1:
+  friendly_name: 厨房状态
+  entity_picture: mdi:human
+binary_sensor.doorbell:
+  friendly_name: 门铃
+  icon: mdi:bell-ring
+sensor.kitchen_illumination:
+  friendly_name: 厨房亮度
+  icon: mdi:lumx
+sun.sun:
+  friendly_name: 日照时长
+  icon: mdi:brightness-4
+light.kitchen_gateway_light:
+  friendly_name: 厨房网关灯
+  icon: mdi:spotlight
+light.yeelight:
+  friendly_name: 卧室台灯
+  icon: mdi:lamp
+sensor.m1:
+  hidden: true
+sensor.m1_temperature:
+  device_class: temperature
+  friendly_name: 室内温度
+  icon: mdi:thermometer
+sensor.m1_humidity:
+  device_class: humidity
+  friendly_name: 室内湿度
+  icon: mdi:water-percent
+sensor.m1_pm25:
+  friendly_name: 室内pm2.5
+  icon: mdi:blur
+sensor.m1_hcho:
+  friendly_name: 室内甲醛
+  icon: mdi:chemical-weapon
+sensor.yingbinlu_traffic:
+  friendly_name: 迎宾路
+  icon: mdi:traffic-light
+sensor.xinguangkuaisu_traffic:
+  friendly_name: 新光快速
+  icon: mdi:traffic-light
+sensor.nanshagangkuaisu_traffic:
+  friendly_name: 南沙港快速
+  icon: mdi:traffic-light
+switch.plug_coffee_machine:
+  friendly_name: 咖啡机
+  icon: mdi:coffee-to-go
+vacuum.xiaomi_vacuum_cleaner:
+  friendly_name: 扫地机器人
+  icon: mdi:robot-vacuum
+switch.hisense_switch:
+  friendly_name: 客厅电视
+switch.teac_switch:
+  friendly_name: 客厅音响
+switch.livingroom_switch:
+  friendly_name: 客厅主灯开关
+switch.livingroom_blue:
+  friendly_name: 客厅主灯蓝光
+  hidden: true
+switch.livingroom_yellow:
+  friendly_name: 客厅主灯黄灯
+  hidden: true
+switch.livingroom_white:
+  friendly_name: 客厅主灯白光
+  hidden: true
+switch.broadlink_switch:
+  friendly_name: 书房电脑主控
+automation.set_living_room_light_blue:
+  friendly_name: 设置客厅蓝灯
+automation.set_living_room_light_yellow:
+  friendly_name: 设置客厅黄灯
+automation.set_living_room_light_white:
+  friendly_name: 设置客厅白灯

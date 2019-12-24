@@ -1,0 +1,7 @@
+### yeelights.yaml
+### bedroom-lamp #############################################
+devices:
+  192.168.50.178:
+    transition: 600
+    use_music_mode: true
+    save_on_change: true

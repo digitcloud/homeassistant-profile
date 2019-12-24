@@ -1,0 +1,139 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: My home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 23.013819       # 可以在百度或高德或google map中找到经纬度，然后写在这里
+  longitude: 113.360344     # 不知道为什么系统默认的经纬度有很大偏差
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Asia/Shanghai
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+
+# Enables the frontend
+frontend:
+  themes: !include themes.yaml
+
+# Enables configuration UI
+config:
+
+custom_updater:
+
+python_script:
+
+# Enables the Lovelace
+lovelace:
+  mode: yaml
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  api_password: !secret http_password   # 请在secret.yaml中更改http_password一项
+#  cors_allowed_origins:
+#    - https://reformedreality.com
+#    - http://reformedreality.com
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+  ignore:
+    - yeelight
+    - plex_mediaserver
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+  exclude:
+    domains:                             # 用于控制 history db 中某些部件或某种类型部件是否可见
+      - persistent_notification          # recorder可用于控制 db 中数据可保留的天数
+      - updater                          # 也可按类型对数据进行筛选
+      - group                            # 可参考 https://www.home-assistant.io/integrations/history/
+
+recorder:
+  purge_keep_days: 1
+  exclude:
+    domains:
+      - persistent_notification
+      - updater
+      - group
+
+# View all events in a logbook
+logbook:
+
+logger:  # 设置log参数，默认显示warning级别以上的信息，可参考 https://www.home-assistant.io/integrations/logger/
+  default: warning
+  logs:
+    homeassistant.core: fatal
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Allow diagnosing system problems
+system_health:
+
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+# Cloud
+cloud:
+
+# Track the sun
+sun:
+
+# Homekit for Homeassistant
+homekit: !include deps/homekit.yaml  # 在HA版本0.64.x之后默认内置了homebridge的功能，HB部件的状态与HA保持一致，可参考 https://www.home-assistant.io/integrations/homekit/
+      
+weather:
+  - platform: darksky
+    api_key: <your-api>
+    name: DarkSky天气
+    mode: daily
+
+xiaomi_aqara:
+  gateways:
+    - host: 192.168.50.140
+      mac: 34CE008D65F4
+      key: <your-key>
+    - host: 192.168.50.6
+      mac: 04CF8C86E369
+      key: <your-key>
+  
+vacuum: !include vacuums.yaml
+
+yeelight: !include yeelights.yaml
+
+switch: !include switches.yaml
+
+sensor: !include sensors.yaml
+
+binary_sensor: !include binary_sensors.yaml
+
+climate: !include climates.yaml
+
+scene: !include scenes.yaml
+
+device_tracker: !include device_trackers.yaml
+
+media_player: !include media_players.yaml
+
+group: !include groups.yaml
+input_number: !include input_number.yaml
+input_select: !include input_select.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
